@@ -149,11 +149,13 @@ public class ArticleDetailFragmentNewVersion extends Fragment implements
 
         tvByLine.setMovementMethod(new LinkMovementMethod());
         tvBody.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Roboto-Regular.ttf"));
+        tvByLine.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Roboto-Regular.ttf"));
 
         if (mCursor != null) {
             getView().setAlpha(0);
             getView().setVisibility(View.VISIBLE);
             getView().animate().alpha(1);
+            tvTitle.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Roboto-Medium.ttf"));
             tvTitle.setText(mCursor.getString(ArticleLoader.Query.TITLE));
             Date publishedDate = parsePublishedDate();
             if (!publishedDate.before(START_OF_EPOCH.getTime())) {
@@ -174,6 +176,7 @@ public class ArticleDetailFragmentNewVersion extends Fragment implements
                                 + "</font>"));
 
             }
+
             tvBody.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n|\n)", "<br />")));
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
