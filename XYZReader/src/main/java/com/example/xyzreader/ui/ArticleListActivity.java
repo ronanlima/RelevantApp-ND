@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -59,7 +60,7 @@ public class ArticleListActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_article_list);
+        setContentView(R.layout.activity_article_list_new_version);
         ButterKnife.bind(this);
         getLoaderManager().initLoader(0, null, this);
 
@@ -203,6 +204,8 @@ public class ArticleListActivity extends AppCompatActivity implements
         public ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
+            titleView.setTypeface(Typeface.createFromAsset(view.getResources().getAssets(), "Roboto-Medium.ttf"));
+            subtitleView.setTypeface(Typeface.createFromAsset(view.getResources().getAssets(), "Roboto-Regular.ttf"));
         }
     }
 }
